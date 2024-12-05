@@ -1,5 +1,5 @@
 [phases.setup]
-pkgs = ["python3", "gcc"]
+pkgs = ["python3", "gcc", "libffi", "libssl"]
 
 [phases.install]
 cmds = [
@@ -9,4 +9,4 @@ cmds = [
 ]
 
 [start]
-cmd = "flask run --host=0.0.0.0 --port=$PORT"
+cmd = "gunicorn flask_app:app --bind 0.0.0.0:$PORT --workers 3"
