@@ -1,9 +1,9 @@
 {
   "rewrites": [
-    { "source": "/(.*)", "destination": "/api/app" }
+    { "source": "/(.*)", "destination": "/flask/app" }
   ],
   "functions": {
-    "api/app.py": {
+    "flask/app.py": {
       "maxDuration": 30  
     }
   }
