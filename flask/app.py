@@ -13,7 +13,16 @@ app = Flask(__name__)
 CORS(app)
 
 # Load the trained model
-model = tf.keras.models.load_model('/app/model/model_v-03.h5')
+model_path = os.path.join(os.path.dirname(__file__), 'model_v-03.h5')
+if model_path:
+    print(model_path)
+    model = tf.keras.models.load_model(model_path)
+else:
+    print('failed in loading model')
+
+@app.route('/')
+def home():
+    return jsonify({'message': 'Flask API is running!'})
 
 @app.route('/predict', methods=['POST'])
 def pred():
